@@ -1,6 +1,7 @@
 import requests
 from tools import download_images
-import argparse
+import os
+from dotenv import load_dotenv
 
 
 def get_epic_images(api_key):
@@ -17,10 +18,9 @@ def get_epic_images(api_key):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Скачивает фотки EPIC из NASA')
-    parser.add_argument('api_key', help='ваш API ключ')
-    args = parser.parse_args()
-    get_epic_images(args.api_key)
+    load_dotenv()
+    api_key = os.getenv("API_NASA_KEY")
+    get_epic_images(api_key)
 
 
 if __name__ == "__main__":
