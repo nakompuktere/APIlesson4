@@ -44,9 +44,9 @@ python get_epic_images.py
 ```
 python python-telegram-bot.py
 ```
-указать ключ "delay" - задержка между отправкой всех фото.
+указать ключ "delay" - задержка между отправкой всех фото и ключ "chat_id" - ваш чат id.
 ```
-python python-telegram-bot.py --delay время в секундах
+python python-telegram-bot.py --delay время в секундах --chat_id "ваш чат id"
 ```
 
 ### Цели проекта
