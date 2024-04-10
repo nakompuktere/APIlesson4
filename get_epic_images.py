@@ -8,13 +8,13 @@ def get_epic_images(api_key):
     url = f"https://api.nasa.gov/EPIC/api/natural/images?api_key={api_key}"
     response = requests.get(url)
     response.raise_for_status()
-    for index, epic_image_inf in enumerate(response.json()):
-        epic_image_name = epic_image_inf["image"]
-        epic_image_full_date = epic_image_inf["date"]
+    for index, epic_data in enumerate(response.json()):
+        epic_image_name = epic_data["image"]
+        epic_image_full_date = epic_data["date"]
         epic_image_date = epic_image_full_date[:10].replace("-", "/")
-        epic_url = f"https://api.nasa.gov/EPIC/archive/natural/{epic_image_date}/png/{epic_image_name}.png?api_key={api_key}"
-        filename = f"images/nasa_epic_{index}.png"
-        download_images(filename, epic_url)
+        epic_url = f"https://api.nasa.gov/EPIC/archive/natural/{epic_image_date}/png/{epic_image_name}.png"
+        file_paths = f"images/nasa_epic_{index}.png"
+        download_images(file_paths, epic_url, api_key)
 
 
 def main():

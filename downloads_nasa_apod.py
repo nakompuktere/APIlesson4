@@ -10,18 +10,18 @@ def downloads_nasa_apod(count, api_key):
     payload = {"count": count}
     response = requests.get(url, params=payload)
     response.raise_for_status()
-    for index, image_inf in enumerate(response.json()):
-        image_url = image_inf["url"]
-        extension = get_ext(image_url)
-        if extension != "":
-            filename = f"images/nasa_apod_{index}{extension}"
-            download_images(filename, image_url)
+    for index, apod_data in enumerate(response.json()):
+        image_urls = apod_data["url"]
+        extension = get_ext(image_urls)
+        if extension:
+            file_paths = f"images/nasa_apod_{index}{extension}"
+            download_images(file_paths, image_urls, api_key)
 
 def main():
     load_dotenv()
     api_key = os.getenv("API_NASA_KEY")
     parser = argparse.ArgumentParser(description='Скачивает фотки APOD из NASA')
-    parser.add_argument('--count', help='количество фото', default=30)
+    parser.add_argument('--count', help='количество фото', default=30, type=int)
     args = parser.parse_args()
     downloads_nasa_apod(args.count, api_key)
 

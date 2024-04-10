@@ -12,9 +12,9 @@ def fetch_spacex_last_launch(id):
     flickr = all_links["flickr"]
     links = flickr["original"]
     
-    for index, item in enumerate(links):
-        filename = f"images/spaceX_{index}.jpeg"
-        download_images(filename, item)
+    for index, link in enumerate(links):
+        file_paths = f"images/spaceX_{index}.jpeg"
+        download_images(file_paths, link)
 
 
 def main():
