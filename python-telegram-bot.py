@@ -21,7 +21,7 @@ def send_files(delay, chat_id):
 
 def main():
     load_dotenv()
-    default_chat_id = os.getenv("CHAT_ID")
+    default_chat_id = os.getenv("TG_CHAT_ID")
     parser = argparse.ArgumentParser(description='бот присылает фото космоса')
     parser.add_argument('--chat_id', help='ваш chat id', default=default_chat_id)
     parser.add_argument('--delay', help='выберете задержку', default=14400, type=int)
