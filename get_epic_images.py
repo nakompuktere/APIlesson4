@@ -5,8 +5,11 @@ from dotenv import load_dotenv
 
 
 def get_epic_images(api_key):
-    url = f"https://api.nasa.gov/EPIC/api/natural/images?api_key={api_key}"
-    response = requests.get(url)
+    url = "https://api.nasa.gov/EPIC/api/natural/images?api_key="
+    payload = {
+        "api_key": api_key
+    }
+    response = requests.get(url, params=payload)
     response.raise_for_status()
     for index, epic_data in enumerate(response.json()):
         epic_image_name = epic_data["image"]

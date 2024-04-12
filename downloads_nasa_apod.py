@@ -7,7 +7,10 @@ from dotenv import load_dotenv
 
 def downloads_nasa_apod(count, api_key):
     url = f"https://api.nasa.gov/planetary/apod?api_key={api_key}"
-    payload = {"count": count}
+    payload = {
+        "count": count
+        "api_key": api_key
+    }
     response = requests.get(url, params=payload)
     response.raise_for_status()
     for index, apod_data in enumerate(response.json()):
