@@ -14,11 +14,11 @@ def downloads_nasa_apod(count, api_key):
     response = requests.get(url, params=payload)
     response.raise_for_status()
     for index, apod in enumerate(response.json()):
-        image_urls = apod["url"]
-        extension = get_ext(image_urls)
+        image_url = apod["url"]
+        extension = get_ext(image_url)
         if extension:
-            file_paths = f"images/nasa_apod_{index}{extension}"
-            download_images(file_paths, image_urls, api_key)
+            file_path = f"images/nasa_apod_{index}{extension}"
+            download_image(file_path, image_url, api_key)
 
 def main():
     load_dotenv()

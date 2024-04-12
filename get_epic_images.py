@@ -16,8 +16,8 @@ def get_epic_images(api_key):
         epic_image_full_date = epic["date"]
         epic_image_date = epic_image_full_date[:10].replace("-", "/")
         epic_url = f"https://api.nasa.gov/EPIC/archive/natural/{epic_image_date}/png/{epic_image_name}.png"
-        file_paths = f"images/nasa_epic_{index}.png"
-        download_images(file_paths, epic_url, api_key)
+        file_path = f"images/nasa_epic_{index}.png"
+        download_image(file_path, epic_url, api_key)
 
 
 def main():
