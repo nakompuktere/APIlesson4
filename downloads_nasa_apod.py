@@ -6,15 +6,15 @@ from dotenv import load_dotenv
 
 
 def downloads_nasa_apod(count, api_key):
-    url = f"https://api.nasa.gov/planetary/apod?api_key={api_key}"
+    url = "https://api.nasa.gov/planetary/apod"
     payload = {
-        "count": count
+        "count": count,
         "api_key": api_key
     }
     response = requests.get(url, params=payload)
     response.raise_for_status()
-    for index, apod_data in enumerate(response.json()):
-        image_urls = apod_data["url"]
+    for index, apod in enumerate(response.json()):
+        image_urls = apod["url"]
         extension = get_ext(image_urls)
         if extension:
             file_paths = f"images/nasa_apod_{index}{extension}"
