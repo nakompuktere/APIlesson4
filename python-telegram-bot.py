@@ -6,8 +6,7 @@ import random
 from dotenv import load_dotenv
 
 
-def send_files(delay, chat_id):
-    bot = telegram.Bot(token=os.getenv("TELEGRAM_TOKEN"))
+def send_files(delay, chat_id, bot):
     while True:
         tree = os.walk('images')
         for folder_contents in tree:
@@ -21,12 +20,13 @@ def send_files(delay, chat_id):
 
 def main():
     load_dotenv()
+    bot = telegram.Bot(token=os.getenv("TELEGRAM_TOKEN"))
     default_chat_id = os.getenv("TG_CHAT_ID")
     parser = argparse.ArgumentParser(description='бот присылает фото космоса')
     parser.add_argument('--chat_id', help='ваш chat id', default=default_chat_id)
     parser.add_argument('--delay', help='выберете задержку', default=14400, type=int)
     args = parser.parse_args()
-    send_files(args.delay, args.chat_id)
+    send_files(args.delay, args.chat_id, bot)
 
 
 if __name__ == "__main__":
