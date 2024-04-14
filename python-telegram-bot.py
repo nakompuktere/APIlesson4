@@ -26,7 +26,6 @@ def main():
     parser.add_argument('--chat_id', help='ваш chat id', default=default_chat_id)
     parser.add_argument('--delay', help='выберете задержку', default=14400, type=int)
     args = parser.parse_args()
-    print(args.chat_id, default_chat_id)
     send_files(args.delay, args.chat_id)
 
 
